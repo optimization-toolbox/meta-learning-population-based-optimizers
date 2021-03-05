@@ -1,0 +1,30 @@
+runner:
+  id: PreprocessingDatagenerator
+  policy_folder: null
+  output_folder: data/D2/instances/1/randomsearch_test_results.pkl
+env:
+  id: LearningToOptimizePOMDP
+  task_config:
+    name: bbob
+    mode: deterministic
+    repeat: 1
+    f_ids:
+    - 1
+    i_ids:
+    - 101
+    - 132
+    dim: 2
+    targets:
+      amount: 100
+      precision: -3
+    max_iteration: 2000
+  env_options:
+    plot_path: null
+    debug: false
+policy:
+  id: BatchRandomSearch
+  dim: 2
+  population_size: 5
+  bounds:
+    - -1
+    - 1

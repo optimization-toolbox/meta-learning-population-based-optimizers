@@ -1,0 +1,10 @@
+runner:
+  id: PostprocessingECDFS
+  title: F1
+  policy_data: data/D2/instances/1/policy_test_results.pkl
+  cmaes_data: data/D2/instances/1/cmaes_test_results.pkl
+  randomsearch_data: data/D2/instances/1/randomsearch_test_results.pkl
+  names:
+    - LPBO
+    - CMA-ES
+    - RS

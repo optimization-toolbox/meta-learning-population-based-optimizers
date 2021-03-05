@@ -1,0 +1,52 @@
+runner:
+  id: PreprocessingDatagenerator
+  policy_folder: data/D2/instances/1/policy_train
+  output_folder: data/D2/instances/1/policy_test_results.pkl
+env:
+  id: LearningToOptimizePOMDP
+  task_config:
+    name: bbob
+    mode: deterministic
+    repeat: 1
+    f_ids:
+    - 1
+    i_ids:
+    - 101
+    - 132
+    dim: 2
+    targets:
+      amount: 100
+      precision: -3
+    max_iteration: 2000
+  env_options:
+    plot_path: null
+    debug: false
+policy:
+  id: LSTMTwo
+  blocks:
+  - type: lstm
+    args:
+      input_size: 2
+      hidden_size: 16
+      num_layers: 2
+    initialization:
+      type: normal
+      args:
+        mean: 0.0
+        std: 0.5
+  - type: linear
+    args:
+      in_features: 16
+      out_features: 1
+    activation:
+      type: tanh
+    initialization:
+      type: normal
+      args:
+        mean: 0.0
+        std: 0.5
+  info:
+    dim: 2
+    seed: 35324
+    population_size: 4
+    repeat_output: 1

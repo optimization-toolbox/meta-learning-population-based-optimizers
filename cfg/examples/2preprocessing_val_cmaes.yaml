@@ -1,0 +1,34 @@
+runner:
+  id: PreprocessingDatagenerator
+  policy_folder: null
+  output_folder: data/D2/instances/1/cmaes_val_results.pkl
+env:
+  id: LearningToOptimizePOMDP
+  task_config:
+    name: bbob
+    mode: deterministic
+    repeat: 1
+    f_ids:
+    - 1
+    i_ids:
+    - 33
+    - 64
+    dim: 2
+    targets:
+      amount: 100
+      precision: -3
+    max_iteration: 2000
+  env_options:
+    plot_path: null
+    debug: false
+policy:
+  id: CMAES
+  dim: 2
+  x0_interval:
+    - 5
+    - -5
+  sigma0: 3
+  maxiter: 20
+  bounds:
+    - -5
+    - 5

@@ -1,0 +1,64 @@
+runner:
+  id: LearningTrain
+  steps: 500
+  global_seed: 12102417
+env:
+  id: LearningToOptimizePOMDP
+  task_config:
+    name: bbob
+    mode: deterministic
+    repeat: 1
+    f_ids:
+    - 1
+    i_ids:
+    - 1
+    - 32
+    dim: 2
+    targets:
+      amount: 100
+      precision: -3
+    max_iteration: 200
+  env_options:
+    plot_path: null
+    debug: false
+optimizer:
+  id: TruncatedRealMutatorGA_Table
+  workers_per_rank: 4
+  num_elite: 5
+  num_parents: 20
+  sigma_initial: 0.3
+  sigma_min: 0.01
+  sigma_decay: 0.95
+  global_seed: 42141
+  output_folder: data/D2/instances/1/policy_train
+  save_steps: 1
+  verbose: 1
+policy:
+  id: LSTMTwo
+  blocks:
+  - type: lstm
+    args:
+      input_size: 2
+      hidden_size: 16
+      num_layers: 2
+    initialization:
+      type: normal
+      args:
+        mean: 0.0
+        std: 0.5
+  - type: linear
+    args:
+      in_features: 16
+      out_features: 1
+    activation:
+      type: tanh
+    initialization:
+      type: normal
+      args:
+        mean: 0.0
+        std: 0.5
+  info:
+    dim: 2
+    seed: 35324
+    population_size: 4
+    repeat_output: 1

@@ -1,0 +1,14 @@
+runner:
+  id: PostprocessingMetalosses
+  title: Function 1
+  policy_data: data/D2/instances/1/policy_learning_data.pkl
+  train_paths:
+    - data/D2/instances/1/cmaes_train_results.pkl
+    - data/D2/instances/1/randomsearch_train_results.pkl
+  val_paths:
+    - data/D2/instances/1/cmaes_val_results.pkl
+    - data/D2/instances/1/randomsearch_val_results.pkl
+  names:
+    - CMA-ES
+    - RS
+
